@@ -1,3 +1,10 @@
+// Here in this comment section I'll include each library and steps that I've included and created folders/files
+// 1. npm install --save-dev jest
+// 2. included   "test": "jest --watchAll" in package.json in "scripts"
+// 3. to run the test do: npm run test
+
+
+
 import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
