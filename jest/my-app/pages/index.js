@@ -8,12 +8,17 @@
 // 5. npm install --save-dev jest-environment-jsdom @testing-library/react
 // 6. made jest.config.mjs file and included a boilerplate from the website
 // 7. created a 2.index.test.js to test the index.js page
+// fifth commit
+// 8. here we tried to test ClickCounter.js in component folder, to do that included npm install --save-dev @testing-library/user-event
+// 9. made component folder, init included ClickCounter.js
+// 10. made a 3.clickCounter.test.js inside tests folder to test the index.js which we included <ClickCounter.js />
 
 
 import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import ClickCounter from "@/component/ClickCounter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,6 +84,9 @@ export default function Home() {
             </a>
           </div>
         </main>
+        
+        <ClickCounter />
+
         <footer className={styles.footer}>
           <a
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
