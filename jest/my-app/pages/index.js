@@ -1,8 +1,13 @@
 // Here in this comment section I'll include each library and steps that I've included and created folders/files
+// second/third commit
 // 1. npm install --save-dev jest
 // 2. included   "test": "jest --watchAll" in package.json in "scripts"
-// 3. to run the test do: npm run test
-
+// 3. made a tests folder, init 1.practice.test.js included
+// 4. to run the test do: npm run test
+// forth commit
+// 5. npm install --save-dev jest-environment-jsdom @testing-library/react
+// 6. made jest.config.mjs file and included a boilerplate from the website
+// 7. created a 2.index.test.js to test the index.js page
 
 
 import Head from "next/head";
