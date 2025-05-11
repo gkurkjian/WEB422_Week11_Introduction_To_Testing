@@ -12,6 +12,11 @@
 // 8. here we tried to test ClickCounter.js in component folder, to do that included npm install --save-dev @testing-library/user-event
 // 9. made component folder, init included ClickCounter.js
 // 10. made a 3.clickCounter.test.js inside tests folder to test the index.js which we included <ClickCounter.js />
+// sixth commit
+// 11. included library npm install --save-dev node-mocks-http
+// 12. made vehicles folder inside api folder, in vehicles included [id].js, same as vehicles info as we did in both Intro JWT and Authentication practices
+// 13. made vehicles.test.js to test the code.
+// 14. in order to test the code, we have to run both npm run dev in GitBash and second GitBash npm run test. Therefore to GitBash should be open down in VS code
 
 
 import Head from "next/head";
