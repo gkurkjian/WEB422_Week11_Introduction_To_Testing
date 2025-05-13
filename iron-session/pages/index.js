@@ -1,3 +1,16 @@
+// Second part of studying, this code is downloaded raw from the course which is popular if we search iron-session online
+// Libraries have to install are;
+// 1. npm install --save-dev cypress
+// 2. inside package.json should we include after script, "cypress": "cypress open"
+// 3. then to test do npm run cypress, choose e2e testing then choose the browser to listen, I mostly choose Chrome
+// To continue
+// 4. we include the baseurl in cypress.config.js
+// 5. copy paste the test in folder cypress/e2e/spec.cy.js from the web422 page
+// 6. in order to run the test code do npm run dev in 1 GitBash, and second GitBash do npm run cypress
+// To continue
+// 7. in order to run cypress headless, without the pop-up, include in scripts: "cypress:headless": "cypress run"
+// 8. to npm run cypress:headless this will run the test in the console instead of pop-up cypress
+// 9. to go more detail, I included in cypress.config.js  video: true in order to show the video of compilation in videos folder
 
 import Layout from "@/components/Layout";
 import Image from "next/image";
