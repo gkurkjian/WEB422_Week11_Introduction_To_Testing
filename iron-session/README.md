@@ -1,70 +1,50 @@
-# Part 1 – Unit Testing Practice with Jest & Testing Libraries
+# Part 2 – Cypress E2E Testing with Iron-Session
 
-This project demonstrates testing components, pages, and API routes in a Next.js application using **Jest**, **Testing Library**, and related tools.
+This part of the project focuses on **end-to-end (E2E) testing** using **Cypress**, based on the `iron-session` login demo provided in the [WEB422 course](https://webprogrammingforappsandservices.sdds.ca/).
 
 ---
 
 ## ✅ Project Setup Summary
 
-### 📦 Dependencies Installed
+### 📦 Installed Dependencies
 
 ```bash
-npm install --save-dev jest
-npm install --save-dev jest-environment-jsdom @testing-library/react
-npm install --save-dev @testing-library/user-event
-npm install --save-dev node-mocks-http
+npm install --save-dev cypress
 ```
 
 ---
 
-## 🗂 Folder & File Structure (Created Step-by-Step)
+## ⚙️ Scripts Configuration
 
-### 📁 tests/
-Contains all test files.
-
-- `1.practice.test.js` → Basic Jest tests  
-- `2.index.test.js` → Tests the default `index.js` page  
-- `3.clickCounter.test.js` → Tests `<ClickCounter />` component  
-- `vehicles.test.js` → Tests `pages/api/vehicles/[id].js` API route  
-
----
-
-### 📁 components/
-- `ClickCounter.js` → Simple counter component for testing
-
----
-
-### 📁 pages/
-- `index.js` → Home page including `<ClickCounter />`
-
----
-
-### 📁 pages/api/vehicles/
-- `[id].js` → Dynamic API route for testing mock requests
-
----
-
-## 🛠 Configuration Files
-
-### ✅ `package.json` scripts
+In your `package.json`, add the following:
 
 ```json
 "scripts": {
-  "test": "jest --watchAll"
+  "dev": "next dev",
+  "cypress": "cypress open",
+  "cypress:headless": "cypress run"
 }
 ```
 
-### ✅ `jest.config.mjs`
+---
+
+## 🗂 Folder & File Structure
+
+### 📁 cypress/
+- `e2e/spec.cy.js` → Contains E2E tests copied from the course
+
+### 🛠 cypress.config.js
+
+Include your test configuration, such as:
 
 ```js
-import nextJest from 'next/jest.js';
+const { defineConfig } = require('cypress');
 
-const createJestConfig = nextJest({
-  dir: './',
-});
-
-export default createJestConfig({
-  testEnvironment: 'jest-environment-jsdom',
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:3000',
+  },
+  video: true, // enables video recordings of test runs
 });
 ```
 
@@ -72,53 +52,64 @@ export default createJestConfig({
 
 ## 🚀 Running the Tests
 
-### Step-by-Step:
+### 1. Start your app
 
-1. Start your **Next.js app** in one terminal:
-   ```bash
-   npm run dev
-   ```
+In Terminal 1 (Git Bash):
 
-2. Open a **second terminal** in VS Code and run:
-   ```bash
-   npm run test
-   ```
+```bash
+npm run dev
+```
 
-> You must run both `npm run dev` and `npm run test` concurrently (in separate terminals) when testing anything related to **API routes** or **server-side logic** like `pages/api/vehicles/[id].js`.
+### 2. Run Cypress UI (interactive)
+
+In Terminal 2:
+
+```bash
+npm run cypress
+```
+
+- Choose **E2E Testing**
+- Pick a browser (e.g. **Chrome**)
+- Run the test file `spec.cy.js`
 
 ---
 
-## 📝 Commit Breakdown (History)
+### 3. Run Cypress in **headless mode** (no popup):
 
-### Second/Third Commit
-- Installed Jest
-- Added `"test"` script in `package.json`
-- Created `tests/1.practice.test.js`
+```bash
+npm run cypress:headless
+```
 
-### Fourth Commit
-- Installed `jest-environment-jsdom`, `@testing-library/react`
-- Created `jest.config.mjs`
-- Wrote `tests/2.index.test.js` to test `pages/index.js`
+- Tests run in the terminal output
+- Videos saved in `/cypress/videos` if `video: true` is enabled
 
-### Fifth Commit
-- Installed `@testing-library/user-event`
-- Created `components/ClickCounter.js`
-- Wrote `tests/3.clickCounter.test.js` for the component
+---
 
-### Sixth Commit
-- Installed `node-mocks-http` for API testing
-- Created `pages/api/vehicles/[id].js`
-- Wrote `tests/vehicles.test.js` to test the API
-- Added instructions to run tests & dev server in two Git Bash terminals
+## 📝 Step-by-Step Recap
+
+### Initial Setup
+- Installed Cypress dev dependency
+- Added Cypress run commands to `package.json`
+- Created `cypress.config.js` and set base URL
+
+### Test Integration
+- Copied test file from course into `cypress/e2e/spec.cy.js`
+- Used two Git Bash terminals:
+  - One for running the app (`npm run dev`)
+  - One for running Cypress (`npm run cypress`)
+
+### Enhancements
+- Added `cypress:headless` script
+- Enabled video recording in test runs
 
 ---
 
 ## ✅ Goals Achieved
 
-- ✔️ Basic Jest test setup
-- ✔️ Page and component testing
-- ✔️ Simulated user interaction via `user-event`
-- ✔️ Mocked API route testing with `node-mocks-http`
-- ✔️ Structured testing folders and config
+- ✔️ Cypress fully integrated
+- ✔️ E2E testing runs via UI or terminal
+- ✔️ Browser selection enabled
+- ✔️ Base URL configured for local app
+- ✔️ Test video recording activated
 
 ---
