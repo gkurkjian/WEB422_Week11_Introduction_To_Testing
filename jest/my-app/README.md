@@ -1,40 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Part 1 – Unit Testing Practice with Jest & Testing Libraries
 
-## Getting Started
+This project demonstrates testing components, pages, and API routes in a Next.js application using **Jest**, **Testing Library**, and related tools.
 
-First, run the development server:
+---
+
+## ✅ Project Setup Summary
+
+### 📦 Dependencies Installed
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install --save-dev jest
+npm install --save-dev jest-environment-jsdom @testing-library/react
+npm install --save-dev @testing-library/user-event
+npm install --save-dev node-mocks-http
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🗂 Folder & File Structure (Created Step-by-Step)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 📁 tests/
+Contains all test files.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- `1.practice.test.js` → Basic Jest tests  
+- `2.index.test.js` → Tests the default `index.js` page  
+- `3.clickCounter.test.js` → Tests `<ClickCounter />` component  
+- `vehicles.test.js` → Tests `pages/api/vehicles/[id].js` API route  
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### 📁 components/
+- `ClickCounter.js` → Simple counter component for testing
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+### 📁 pages/
+- `index.js` → Home page including `<ClickCounter />`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 📁 pages/api/vehicles/
+- `[id].js` → Dynamic API route for testing mock requests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🛠 Configuration Files
+
+### ✅ `package.json` scripts
+
+```json
+"scripts": {
+  "test": "jest --watchAll"
+}
+```
+
+### ✅ `jest.config.mjs`
+
+```js
+import nextJest from 'next/jest.js';
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+export default createJestConfig({
+  testEnvironment: 'jest-environment-jsdom',
+});
+```
+
+---
+
+## 🚀 Running the Tests
+
+### Step-by-Step:
+
+1. Start your **Next.js app** in one terminal:
+   ```bash
+   npm run dev
+   ```
+
+2. Open a **second terminal** in VS Code and run:
+   ```bash
+   npm run test
+   ```
+
+> You must run both `npm run dev` and `npm run test` concurrently (in separate terminals) when testing anything related to **API routes** or **server-side logic** like `pages/api/vehicles/[id].js`.
+
+---
+
+## 📝 Commit Breakdown (History)
+
+### Second/Third Commit
+- Installed Jest
+- Added `"test"` script in `package.json`
+- Created `tests/1.practice.test.js`
+
+### Fourth Commit
+- Installed `jest-environment-jsdom`, `@testing-library/react`
+- Created `jest.config.mjs`
+- Wrote `tests/2.index.test.js` to test `pages/index.js`
+
+### Fifth Commit
+- Installed `@testing-library/user-event`
+- Created `components/ClickCounter.js`
+- Wrote `tests/3.clickCounter.test.js` for the component
+
+### Sixth Commit
+- Installed `node-mocks-http` for API testing
+- Created `pages/api/vehicles/[id].js`
+- Wrote `tests/vehicles.test.js` to test the API
+- Added instructions to run tests & dev server in two Git Bash terminals
+
+---
+
+## ✅ Goals Achieved
+
+- ✔️ Basic Jest test setup
+- ✔️ Page and component testing
+- ✔️ Simulated user interaction via `user-event`
+- ✔️ Mocked API route testing with `node-mocks-http`
+- ✔️ Structured testing folders and config
+
+---
+
+## 🧩 Next Steps (Ideas for Part 2)
+
+- Add `jest.setup.js` to configure global testing utilities
+- Use `supertest` or `msw` for advanced API mocking
+- Add CI with GitHub Actions to run tests automatically
+
+---
